@@ -1,6 +1,8 @@
 package app.eda.hash;
 
+
 import app.eda.st.ST;
+import app.eda.util.Queue;
 
 public class SeparateChainingHashST<K,V> implements ST<K,V>{
 
@@ -95,8 +97,15 @@ public class SeparateChainingHashST<K,V> implements ST<K,V>{
 
 	@Override
 	public Iterable<K> keys() {
-		// TODO Auto-generated method stub
-		return null;
+		Queue<K> q = new Queue<K>();
+		
+			for(int i = 0; i < m; i++) {
+				for(Node x = vector[i]; x != null; x = x.next) {
+					q.enqueue((K)x.key);
+				}
+			}
+		
+		return q;
 	}
 
 }
