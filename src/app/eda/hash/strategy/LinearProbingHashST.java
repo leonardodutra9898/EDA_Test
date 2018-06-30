@@ -9,6 +9,7 @@ public class LinearProbingHashST<K, V> implements ST<K, V>{
 	private int m = 16;
 	private K[] keys;
 	private V[] values;
+
 	
 	public LinearProbingHashST(int m) {
 		this.m = m;
@@ -18,16 +19,15 @@ public class LinearProbingHashST<K, V> implements ST<K, V>{
 		values = (V[]) new Object[m];
 	}
 	
-	private int hash(K key) {
-		return ((key.hashCode() & 0x7fffffff) % m);
-	}
+    private int hash(K key) {
+        return (key.hashCode() & 0x7fffffff) % m;
+    }
 	
 	@Override
 	public void put(K key, V value) {
 		
-		if(n >= m/2) { 
+		if(n >= m/2) 
 			resize(2*m);
-		}
 		
 		int i;
 		for(i = hash(key); keys[i] != null; i = (i + 1) % m) {
@@ -35,10 +35,12 @@ public class LinearProbingHashST<K, V> implements ST<K, V>{
 				values[i] = value;
 				return;
 			}
-			keys[i] = key;
-			values[i] = value;
-			n++;
 		}
+		
+		keys[i] = key;
+		values[i] = value;
+		System.out.println("Add into list Hash=" + i + " K=" + keys[i] + ", V=" + values[i]);
+		n++;
 	}
 
 	private void resize(int m) {

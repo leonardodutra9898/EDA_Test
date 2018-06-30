@@ -29,10 +29,11 @@ public class SondagemLinear {
 					Integer k = in.nextInt();
 					
 					linearP.put(k, i);
-					System.out.println("Item add.");
+//					System.out.println("Item add.");
 				}
 				break;
 			case 2:
+				System.out.println("Vazio ? = " + linearP.isEmpty() + ", total de " + linearP.size());
 				for(Integer vs : linearP.keys()) {
 					System.out.println("ver ==> " + vs + " -- hash => " + vs.hashCode());
 				}
