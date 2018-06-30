@@ -23,10 +23,27 @@ public class LinearProbingHashST<K, V> implements ST<K, V>{
         return (key.hashCode() & 0x7fffffff) % m;
     }
 	
+	private void resize(int m) {
+		LinearProbingHashST<K,V> temp = new LinearProbingHashST<K, V>(m);
+		
+			for(int i = 0; i < m; i++) {
+				if(keys[i] != null) {
+					temp.put(keys[i], values[i]);
+				}
+			}
+			
+			keys = temp.keys;
+			values = temp.values;
+			m = temp.m;
+		
+	}
+    
+    
 	@Override
 	public void put(K key, V value) {
 		
-
+		if(n >= m/2) 
+			resize(2*m);
 		
 		int i;
 		for(i = hash(key); keys[i] != null; i = (i + 1) % m) {
@@ -44,7 +61,32 @@ public class LinearProbingHashST<K, V> implements ST<K, V>{
 
 	@Override
 	public void delete(K key) {
-
+		if(!contains(key))
+			return;
+		
+		int i = hash(key);
+		while(!key.equals(keys[i])) {
+			i = (i + 1) % m;
+		}
+			
+		keys[i] = null;
+		values[i] = null;
+		
+		i = (i + 1) % m;
+		while(keys[i] != null) {
+			K keyToRehash = keys[i];
+			V valueToRehash = values[i];
+			keys[i] = null;
+			values[i] = null;
+			n--;
+			put(keyToRehash, valueToRehash);
+			i = (i + 1) % m;
+		}
+		
+		n--;
+		
+		if((n > 0) && (n <= m/8))
+			resize(m/2);
 	}
 	
 	
