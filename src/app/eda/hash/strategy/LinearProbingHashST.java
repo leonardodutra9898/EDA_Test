@@ -23,6 +23,22 @@ public class LinearProbingHashST<K, V> implements ST<K, V>{
         return (key.hashCode() & 0x7fffffff) % m;
     }
 	
+	private void resize(int m) {
+		LinearProbingHashST<K,V> temp = new LinearProbingHashST<K, V>(m);
+		
+			for(int i = 0; i < m; i++) {
+				if(keys[i] != null) {
+					temp.put(keys[i], values[i]);
+				}
+			}
+			
+			keys = temp.keys;
+			values = temp.values;
+			m = temp.m;
+		
+	}
+    
+    
 	@Override
 	public void put(K key, V value) {
 		
@@ -43,42 +59,8 @@ public class LinearProbingHashST<K, V> implements ST<K, V>{
 		n++;
 	}
 
-	private void resize(int m) {
-		LinearProbingHashST<K,V> temp = new LinearProbingHashST<K, V>(m);
-		
-			for(int i = 0; i < m; i++) {
-				if(keys[i] != null) {
-					temp.put(keys[i], values[i]);
-				}
-			}
-			
-			keys = temp.keys;
-			values = temp.values;
-			m = temp.m;
-		
-	}
-	
-	@Override
-	public V get(K key) {
-		for(int i = hash(key); keys[i] != null; i = (i + 1) % m) {
-			if(keys[i].equals(key)) {
-				return values[i];
-			}
-		}
-		return null;
-	}
-
-	@Override
-	public boolean contains(K key) {
-		if(key == null)
-			throw new IllegalArgumentException("Nulo...");
-		
-		return get(key) != null;
-	}
-
 	@Override
 	public void delete(K key) {
-		
 		if(!contains(key))
 			return;
 		
@@ -105,6 +87,25 @@ public class LinearProbingHashST<K, V> implements ST<K, V>{
 		
 		if((n > 0) && (n <= m/8))
 			resize(m/2);
+	}
+	
+	
+	@Override
+	public V get(K key) {
+		for(int i = hash(key); keys[i] != null; i = (i + 1) % m) {
+			if(keys[i].equals(key)) {
+				return values[i];
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public boolean contains(K key) {
+		if(key == null)
+			throw new IllegalArgumentException("Nulo...");
+		
+		return get(key) != null;
 	}
 
 	@Override
