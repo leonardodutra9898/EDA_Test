@@ -1,11 +1,13 @@
 package app.eda;
 
 import app.eda.hash.EncadeamentoSeparadoTest;
-import app.eda.hash.SondagemLinear;
+import app.eda.hash.SondagemLinearTest;
 
 public class App {
 
 	public static void main(String[] a) {
+		
+/* *************        1ª QUESTÃO	*****************************************/		
 		
 		/////////////// ENCADEAMENTO SEPARADO \\\\\\\\\\\
 
@@ -14,9 +16,10 @@ public class App {
 		
 		/////////////// SONDAGEM LINEAR \\\\\\\\\\\\\\\\\\
 		
-		SondagemLinear sLinear = new SondagemLinear();
-		sLinear.sondagemLinearTest(9);
+//		SondagemLinearTest sLinear = new SondagemLinearTest();
+//		sLinear.sondagemLinearTest(9);
 		
+/* ****************************************************************************/
 		
 	}
 	

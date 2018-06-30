@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import app.eda.hash.strategy.LinearProbingHashST;
 
-public class SondagemLinear {
+public class SondagemLinearTest {
 
 	public void sondagemLinearTest(int m) {
 		
