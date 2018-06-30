@@ -67,12 +67,7 @@ public class SeparateChainingHashST<K,V> implements ST<K,V>{
 
 	@Override
 	public void delete(K key) {
-		if(key == null) throw new IllegalArgumentException("Valor nulo para deletar");
-		
-		if(get(key) != null) {
-			n--;
-			
-		}
+
 	}
 
 	private Node delete(Node x, K key) {
