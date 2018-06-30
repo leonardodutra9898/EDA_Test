@@ -1,4 +1,4 @@
-package app.eda.hash;
+package app.eda.hash.strategy;
 
 
 import app.eda.st.ST;
