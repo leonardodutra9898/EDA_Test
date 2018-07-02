@@ -1,0 +1,10 @@
+Q.3
+a. 
+O método x baseia-se no cálculo eficiente da função hash para a posição i + 1 no texto, dado seu valor para a posição i. Segue-se diretamente de uma simples formulação matemática. Usando a notação t para xxx, o número correspondente à substring de caracteres-m do txt que começa na posição i é (fórmula pg 775) 
+and we can assume that we know the value  of h(x) = x mod Q. Shifting one position right in the text corresponds to replacing x by (fórmula na pg 775)
+
+
+Agora, o ponto crucial é que não temos que manter os valores dos números, apenas os valores de seus remanescentes quando divididos por q. Uma propriedade fundamental da operação de módulo é que, se tomarmos o resto quando dividido por q após cada operação aritmética, obteremos a mesma resposta, como se fôssemos realizar todas as operações aritméticas, e depois o restante, quando dividido por Q. Aproveitamos essa propriedade antes, ao implementar o hashing modular com o método de Horner. O resultado é que podemos efetivamente mover uma posição correta no texto em tempo constante, seja m 5 ou 100 ou 1.000
+
+
+b. depois

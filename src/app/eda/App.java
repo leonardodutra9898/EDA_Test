@@ -1,7 +1,6 @@
 package app.eda;
 
-import app.eda.hash.EncadeamentoSeparadoTest;
-import app.eda.hash.SondagemLinearTest;
+import app.eda.string.substring.PadraoSubstring;
 
 public class App {
 
@@ -20,7 +19,20 @@ public class App {
 //		sLinear.sondagemLinearTest(9);
 		
 /* ****************************************************************************/
+
 		
+/* *************        3ª QUESTÃO	*****************************************/
+
+String padrao = "y";
+String txt = "kakas df ase wjj js leo ajka kjdasafs";
+//
+PadraoSubstring ps = new PadraoSubstring(padrao);
+int offset = ps.search(txt);
+//
+System.out.println("Texto ==> " + txt);
+System.out.println("OffSet ==> " + offset);
+
+/* ****************************************************************************/
 	}
 	
 }
